@@ -1,0 +1,49 @@
+task-management-system/
+│
+├── backend/                             # Express + MongoDB Source
+│   ├── config/
+│   │   └── db.js                        # Database connection setup
+│   ├── middleware/
+│   │   ├── auth.js                      # JWT Verification & Role-based guards
+│   │   └── errorHandler.js              # Centralized API error parsing
+│   ├── models/
+│   │   ├── User.js                      # User schema (Roles: Admin, Manager, User)
+│   │   └── Task.js                      # Task schema (Status, Priority, Assignments)
+│   ├── routes/
+│   │   ├── auth.routes.js               # Registration, Login, Token management
+│   │   └── task.routes.js               # CRUD endpoints, Filters, Sorting
+│   ├── services/
+│   │   └── email.service.js             # Nodemailer configuration & templates
+│   ├── sockets/
+│   │   └── task.socket.js               # Socket.io connection handlers & emitters
+│   ├── .env.example                     # Reference for environment secrets
+│   ├── package.json                     # Backend dependencies & runtime scripts
+│   └── server.js                        # Entry point (App config, Http & Socket initialization)
+│
+└── frontend/                            # React + Vite Source
+    ├── public/                          # Static assets, site icons
+    ├── src/
+    │   ├── assets/                      # Application wide styling images or SVGs
+    │   ├── components/                  # Global reusable UI blocks
+    │   │   ├── Layout.jsx               # Navigation bar & Sidebar layout wrappers
+    │   │   ├── ProtectedRoute.jsx       # Route guard matching JWT role arrays
+    │   │   └── TaskCard.jsx             # Individual draggable task node
+    │   ├── context/
+    │   │   ├── AuthContext.jsx          # Context provider handling global login state
+    │   │   └── SocketContext.jsx        # Keeps a single shared socket connection open
+    │   ├── hooks/
+    │   │   └── useFetch.js              # Standard API abstraction wrapper
+    │   ├── pages/                       # Screen views tied directly to routing paths
+    │   │   ├── Login.jsx                # Authentication entry view
+    │   │   ├── Register.jsx             # Account registration page
+    │   │   ├── AdminPanel.jsx           # Management matrix grid (Admin only)
+    │   │   └── Dashboard.jsx            # Main Drag-and-drop Kanban interface
+    │   ├── services/
+    │   │   └── api.js                   # Axios base client interface setup
+    │   ├── App.jsx                      # Application main routes engine
+    │   ├── index.css                    # Tailwind CSS structural core imports
+    │   └── main.jsx                     # Vite index bundle execution mounting point
+    ├── index.html                       # Base template architecture document
+    ├── tailwind.config.js               # Design system rules overrides & dark-mode settings
+    ├── vite.config.js                   # Vite deployment routing compilation settings
+    └── package.json                     # Frontend design & client library frameworks
